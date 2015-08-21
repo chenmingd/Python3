@@ -72,3 +72,44 @@ print(l)
 #一个很好的例子
 L = [[1,2],[3,4],[5,6],[7,8]];
 print([(lambda x : x[0]*x[0]+x[1]*x[1])(x) for x in L]);
+
+#装饰器
+def log(func):
+	def wrapper(*args,**kw):
+		print("run %s()"%(func.__name__))
+		return func(*args,**kw)
+	return wrapper
+
+@log  #要用log装饰newfun函数
+def newfun(a,b,c):
+	return a+b+c
+tn=newfun(1,2,3)
+print("newfun result:"+str(tn))
+
+
+#通用的log装饰函数
+import functools 
+def commonlog(text):
+	if isinstance (text,str):
+		def decorator(func):
+			@functools.wraps(func)
+			def wrapper(*args,**kw):
+				print("before call log %s__call %s()"%(text,func.__name__))
+				rect=func(*args,**kw)
+				print("end call and result is",rect,sep=":")
+				return rect
+			return wrapper
+		return decorator
+	else:
+		def wrapper(*args,**kw):
+			print("log %s__call %s()"%(text,text.__name__))
+			print("before call")
+			rect=text(*args,**kw)
+			print("end call")
+			return rect
+		return wrapper
+		
+@commonlog("xxx")
+def newtest(a,b,c):
+	return a+b+c
+print("result is %d"%(newtest(1,2,3)))
