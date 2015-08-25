@@ -16,5 +16,10 @@ def test():
 	else:
 		print("Too many arguments")
 
+class Hello(object):
+	def sayHello(self,name):
+		print("hello word:",name)
+		
+
 if __name__=='__main__':
 	test()

@@ -187,3 +187,19 @@ class WeekDay(Enum):
 	Fri = 5
 	Sat = 6
 print("WeekDay Sun",WeekDay.Sun.value,WeekDay['Sun'].value)
+
+#使用原类
+print("###使用原类####")
+import hello
+hello.test()
+print(type(hello))
+print(type(hello.Hello))
+h=hello.Hello()
+print(type(h))
+
+print("##############原类########################")
+Hello=type("Hello",(object,),dict(hello=lambda name:print("hello:",name)))
+#print(type(Hello))
+#hl=Hello()
+#print(type(hl),dir(h1))
+#h1.hello("chenmd")
