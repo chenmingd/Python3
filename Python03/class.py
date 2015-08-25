@@ -152,3 +152,38 @@ for n in spacial:
 l=[x for x in spacial]
 print(l)
 
+
+#这个代码牛逼
+class Chain(object):
+
+	def __init__(self, path=''):
+		self._path = path
+
+	#一个链式定义的好例子
+	def __getattr__(self, path): 
+		return Chain('%s/%s' % (self._path, path))
+
+	def __str__(self):
+		return self._path
+
+	__repr__ = __str__
+print( Chain())
+print( Chain().status)
+print( Chain().status.user.timeline.list)
+
+
+#枚举
+from enum import Enum,unique
+Month=Enum("Month",('Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'))
+print(Month.Jan.value)
+
+@unique
+class WeekDay(Enum):
+	Sun = 0 # Sun的value被设定为0
+	Mon = 1
+	Tue = 2
+	Wed = 3
+	Thu = 4
+	Fri = 5
+	Sat = 6
+print("WeekDay Sun",WeekDay.Sun.value,WeekDay['Sun'].value)
