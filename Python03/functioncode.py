@@ -48,7 +48,7 @@ print(prod)
 
 #filter()把传入的函数依次作用于每个元素，然后根据返回值是True还是False决定保留还是丢弃该元素。
 g=filter(lambda x:x%2==0,(x for x in range(20)))
-...
+'''
 print(list(g))
 while True:
     try:
@@ -57,7 +57,7 @@ while True:
     except StopIteration as e:
         print('Generator return value:', e.value)
         break
-...		
+'''	
 for num in g:
 	print(num)
 	
