@@ -1,4 +1,4 @@
-#! /usr/bin/evn python3
+#! /usr/bin/env python3
 #-*- coding:utf-8 -*-
 #slice
 print((list(range(100))[0:50:2]))
